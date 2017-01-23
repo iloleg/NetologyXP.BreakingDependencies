@@ -55,9 +55,14 @@ function calc(state, itemType) {
     }
     return base(state) + itemTypeTaxModifier[state];
 }
-function calculatePriceFor() {
-    
+
+
+//calculatePriceFor
+function calculatePriceFor(state , product) {
+    return (1+(state, itemTypes.type)* items.price);
+    //return (1 + tax(state, items[item].type)) * items[item].price;
 }
+
 class TaxCalculator {
     // У этой функции нелья менять интерфейс
     // Но можно менять содержимое
