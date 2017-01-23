@@ -55,7 +55,9 @@ function calc(state, itemType) {
     }
     return base(state) + itemTypeTaxModifier[state];
 }
-
+function calculatePriceFor() {
+    
+}
 class TaxCalculator {
     // У этой функции нелья менять интерфейс
     // Но можно менять содержимое
@@ -93,7 +95,7 @@ var tests = [
 ];
 
 //Раскомментируйте следующую строчку для запуска тестов:
-//runAllTests (tests);
+runAllTests (tests);
 
 //############################
 //Код ниже этой строчки не надо менять для выполнения домашней работы
