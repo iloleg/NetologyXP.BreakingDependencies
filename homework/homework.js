@@ -85,23 +85,12 @@ calculateTaxes();
 //############################
 //Тесты:
 var tests = [
-            () = > assertEquals(3.0 * (1 + 0.04), calculatePriceFor("Alabama", "eggs")),
-    (
-)
-=
->
-assertEquals(0.4 * (1 + 0.015 + 0.065), calculatePriceFor("Arkansas", "coca-cola")),
-    () =
->
-assertEquals(6.7 * (1 + 0.0), calculatePriceFor("Alaska", "amoxicillin")),
-    () =
->
-assertEquals(6.7 * (1 + 0.0), calculatePriceFor("California", "amoxicillin")),
-    () =
->
-assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
-]
-;
+    () => assertEquals(3.0 * (1 + 0.04), calculatePriceFor("Alabama", "eggs")),
+    () => assertEquals(0.4 * (1 + 0.015 + 0.065), calculatePriceFor("Arkansas", "coca-cola")),
+    () => assertEquals(6.7 * (1 + 0.0), calculatePriceFor("Alaska", "amoxicillin")),
+    () => assertEquals(6.7 * (1 + 0.0), calculatePriceFor("California", "amoxicillin")),
+    () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
+];
 
 //Раскомментируйте следующую строчку для запуска тестов:
 //runAllTests (tests);
@@ -143,24 +132,15 @@ function assertEquals(expected, actual) {
 
 function runAllTests(tests) {
     var failedTests = tests
-            .map((f) = > f()
-)
-.
-    map((code) = > {
-        if (code === -1
-)
-    {
-        return 1
-    }
-else
-    {
-        return 0
-    }
-})
-.
-    reduce((a, b) = > a + b, 0
-)
-    ;
+        .map((f) => f())
+        .map((code) => {
+            if (code === -1) {
+                return 1
+            } else {
+                return 0
+            }
+        })
+        .reduce((a, b) => a + b, 0);
 
     if (failedTests === 0) {
         console.log(`Success: ${tests.length} tests passed.`);
