@@ -6,10 +6,8 @@ var items = {
     "eggs": {price: 3.0, type: "Groceries"},
     "coca-cola": {price: 0.4, type: "Groceries"},
     "amoxicillin": {price: 6.7, type: "Groceries"},
-
     "aspirin": {price: 0.2, type: "PrescriptionDrug"},
     "marijuana": {price: 1.4, type: "PrescriptionDrug"},
-
     "hamburger": {price: 2, type: "PreparedFood"},
     "ceasar salad": {price: 4.2, type: "PreparedFood"},
 };
