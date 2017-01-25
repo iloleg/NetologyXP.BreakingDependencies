@@ -1,6 +1,8 @@
 "use strict";
 
 // Этот код можно менять как угодно
+
+
 var items = {
     "milk": {price: 5.5, type: "Groceries"},
     "eggs": {price: 3.0, type: "Groceries"},
@@ -37,7 +39,6 @@ var itemTypes =
             "Texas":0
         }
     };
-
 function base(state) {
     var taxes = {
         "Alabama": 0.04,
@@ -52,6 +53,21 @@ function base(state) {
     };
     return taxes[state];
 }
+
+var itemTypesTaxes = {
+    "Alabama": {base: 0.04, Groceries: 0, PrescriptionDrug: "", PreparedFood: 0},
+    "Alaska": {base: 0, Groceries: 0, PrescriptionDrug: 0, PreparedFood: 0},
+    "Arizona": {base: 0.056, Groceries: "", PrescriptionDrug: "", PreparedFood: 0},
+    "Arkansas": {base: 0.065, Groceries: 0.015, PrescriptionDrug: "", PreparedFood: 0},
+    "California": {base: 0.075, Groceries: "", PrescriptionDrug: "", PreparedFood: 0},
+    "Colorado": {base: 0.029, Groceries: "", PrescriptionDrug: "", PreparedFood: 0},
+    "Connecticut": {base: 0.0635, Groceries: "", PrescriptionDrug: "", PreparedFood: 0},
+    "Tennessee": {base: 0.07, Groceries: 0.05, PrescriptionDrug: "", PreparedFood: 0},
+    "Texas": {base: 0.0625, Groceries: "freeTax", PrescriptionDrug: 0, PreparedFood:"freeTax"}
+};
+
+
+
 
 function calc(state, itemType) {
 
