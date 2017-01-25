@@ -58,9 +58,13 @@ function calc(state, itemType) {
 
 
 //calculatePriceFor
-function calculatePriceFor(state , product) {
-    return (1+(state, itemTypes.type)* items.price);
-    //return (1 + tax(state, items[item].type)) * items[item].price;
+function calculatePriceFor(state, item) {
+    if (items[item].type === "PreparedFood") {
+        return (items[item].price * (1 + base(state)));
+    }
+    else {
+        return (items[item].price * (1 + calc(state, items[item].type)));
+    }
 }
 
 class TaxCalculator {
