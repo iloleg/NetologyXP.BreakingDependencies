@@ -25,7 +25,7 @@ var itemTypes =
             "Colorado": "",
             "Connecticut": "",
             "Tennessee": 0.05,
-            "Texas":""
+            "Texas":0
         },
         "PrescriptionDrug": {
             "Alabama": "",
@@ -35,8 +35,8 @@ var itemTypes =
             "California": "",
             "Colorado": "",
             "Connecticut": "",
-            "Tennessee":"",
-            "Texas":""
+            "Tennessee":0,
+            "Texas":0
         }
     };
 
@@ -112,12 +112,12 @@ var tests = [
     () => assertEquals(6.7 * (1 + 0.0), calculatePriceFor("Alaska", "amoxicillin")),
     () => assertEquals(6.7 * (1 + 0.0), calculatePriceFor("California", "amoxicillin")),
     () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
-   // () => assertEquals(3.0 * (1 + 0.07), calculatePriceFor("Tennessee", "eggs")),
- //   () => assertEquals(0.2 * (1 + 0.07), calculatePriceFor("Tennessee", "aspirin")),
- //   () => assertEquals(4.2 * (1 + 0.07), calculatePriceFor("Tennessee", "ceasar salad")),
-//    () => assertEquals(3.0 * (1 + 0.0625), calculatePriceFor("Texas", "eggs")),
-//   () => assertEquals(0.2 * (1 + 0.0625), calculatePriceFor("Texas", "aspirin")),
- //   () => assertEquals(4.2 * (1 + 0.0625), calculatePriceFor("Texas", "ceasar salad")),
+    () => assertEquals(3.0 * (1 + 0.07+0.05), calculatePriceFor("Tennessee", "eggs")),
+    () => assertEquals(0.2 * (1 + 0.07), calculatePriceFor("Tennessee", "aspirin")),
+    () => assertEquals(4.2 * (1 + 0.07), calculatePriceFor("Tennessee", "ceasar salad")),
+    () => assertEquals(3.0 * (1 + 0.0625), calculatePriceFor("Texas", "eggs")),
+    () => assertEquals(0.2 * (1 + 0.0625), calculatePriceFor("Texas", "aspirin")),
+    () => assertEquals(4.2 * (1 + 0.0625), calculatePriceFor("Texas", "ceasar salad")),
 
 
 ];
