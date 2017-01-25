@@ -21,7 +21,9 @@ var itemTypes =
             "Arkansas": 0.015,
             "California": "",
             "Colorado": "",
-            "Connecticut": ""
+            "Connecticut": "",
+            "Tennessee":"",
+            "Texas":""
         },
         "PrescriptionDrug": {
             "Alabama": "",
@@ -101,6 +103,15 @@ var tests = [
     () => assertEquals(6.7 * (1 + 0.0), calculatePriceFor("Alaska", "amoxicillin")),
     () => assertEquals(6.7 * (1 + 0.0), calculatePriceFor("California", "amoxicillin")),
     () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
+
+    () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
+    () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
+    () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
+    () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
+    () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
+
+
+
 ];
 
 //Раскомментируйте следующую строчку для запуска тестов:
