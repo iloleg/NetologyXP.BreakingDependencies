@@ -6,8 +6,10 @@ var items = {
     "eggs": {price: 3.0, type: "Groceries"},
     "coca-cola": {price: 0.4, type: "Groceries"},
     "amoxicillin": {price: 6.7, type: "Groceries"},
+
     "aspirin": {price: 0.2, type: "PrescriptionDrug"},
     "marijuana": {price: 1.4, type: "PrescriptionDrug"},
+
     "hamburger": {price: 2, type: "PreparedFood"},
     "ceasar salad": {price: 4.2, type: "PreparedFood"},
 };
@@ -22,7 +24,7 @@ var itemTypes =
             "California": "",
             "Colorado": "",
             "Connecticut": "",
-            "Tennessee":"",
+            "Tennessee": 0.05,
             "Texas":""
         },
         "PrescriptionDrug": {
@@ -32,7 +34,9 @@ var itemTypes =
             "Arkansas": "",
             "California": "",
             "Colorado": "",
-            "Connecticut": ""
+            "Connecticut": "",
+            "Tennessee":"",
+            "Texas":""
         }
     };
 
@@ -44,7 +48,9 @@ function base(state) {
         "Arkansas": 0.065,
         "California": 0.075,
         "Colorado": 0.029,
-        "Connecticut": 0.0635
+        "Connecticut": 0.0635,
+        "Tennessee": 0.07,
+        "Texas": 0.0625
     };
     return taxes[state];
 }
@@ -64,9 +70,12 @@ function calculatePriceFor(state, item) {
     if (items[item].type === "PreparedFood") {
         return (items[item].price * (1 + base(state)));
     }
+
     else {
-        return (items[item].price * (1 + calc(state, items[item].type)));
+       return (items[item].price * (1 + calc(state, items[item].type)));
+
     }
+
 }
 
 class TaxCalculator {
@@ -103,13 +112,12 @@ var tests = [
     () => assertEquals(6.7 * (1 + 0.0), calculatePriceFor("Alaska", "amoxicillin")),
     () => assertEquals(6.7 * (1 + 0.0), calculatePriceFor("California", "amoxicillin")),
     () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
-
-    () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
-    () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
-    () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
-    () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
-    () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
-
+   // () => assertEquals(3.0 * (1 + 0.07), calculatePriceFor("Tennessee", "eggs")),
+ //   () => assertEquals(0.2 * (1 + 0.07), calculatePriceFor("Tennessee", "aspirin")),
+ //   () => assertEquals(4.2 * (1 + 0.07), calculatePriceFor("Tennessee", "ceasar salad")),
+//    () => assertEquals(3.0 * (1 + 0.0625), calculatePriceFor("Texas", "eggs")),
+//   () => assertEquals(0.2 * (1 + 0.0625), calculatePriceFor("Texas", "aspirin")),
+ //   () => assertEquals(4.2 * (1 + 0.0625), calculatePriceFor("Texas", "ceasar salad")),
 
 
 ];
@@ -131,7 +139,7 @@ function getSelectedItem() {
 }
 
 function getSelectedState() {
-    var state = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut"];
+    var state = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut","Tennessee","Texas"];
     return state[Math.floor(Math.random() * state.length)];
 }
 
