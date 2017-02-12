@@ -92,7 +92,14 @@ function calcTaxPercent(state, itemType) {
     }
     return base(state) + itemTypeTaxModifier[state];
 }
+function calc(state, itemType) {
 
+    var itemTypeTaxModifier = itemTypes[itemType];
+    if (itemTypeTaxModifier[state] === "") {
+        return 0;
+    }
+    return base(state) + itemTypeTaxModifier[state];
+}
 
 //calculatePriceFor
 function calculatePriceFor(state, item) {
