@@ -1,0 +1,56 @@
+{
+  "Alabama": {
+    "base_tax": 0.04,
+    "Groceries": 0,
+    "PrescriptionDrug": "",
+    "PreparedFood": 0
+  },
+  "Alaska": {
+    "base_tax": 0,
+    "Groceries": 0,
+    "PrescriptionDrug": "",
+    "PreparedFood": 0
+  },
+  "Arizona": {
+    "base_tax": 0.056,
+    "Groceries": "",
+    "PrescriptionDrug": 0,
+    "PreparedFood": 0
+  },
+  "Arkansas": {
+    "base_tax": 0.065,
+    "Groceries": 0.015,
+    "PrescriptionDrug": "",
+    "PreparedFood": 0
+  },
+  "California": {
+    "base_tax": 0.075,
+    "Groceries": "",
+    "PrescriptionDrug": "",
+    "PreparedFood": 0
+  },
+  "Colorado": {
+    "base_tax": 0.029,
+    "Groceries": "",
+    "PrescriptionDrug": "",
+    "PreparedFood": 0
+  },
+  "Connecticut": {
+    "base_tax": 0.0635,
+    "Groceries": "",
+    "PrescriptionDrug": "",
+    "PreparedFood": 0
+  },
+  "Tennessee": {
+    "base_tax": 0.07,
+    "Groceries": 0.05,
+    "PrescriptionDrug": 0,
+    "PreparedFood": 0
+  },
+  "Texas": {
+    "base_tax": 0.0625,
+    "Groceries": "",
+    "PrescriptionDrug": "",
+    "PreparedFood": 0
+  }
+}
