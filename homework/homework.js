@@ -80,7 +80,7 @@ function calculatePriceFort(itemTypesTaxes, item) {
 
 
 
-function calc(state, itemType) {
+function calcTaxPercent(state, itemType) {
 
     var itemTypeTaxModifier = itemTypes[itemType];
     if (itemTypeTaxModifier[state] === "") {
@@ -99,7 +99,7 @@ function calculatePriceFor(state, item) {
 
     else {
 
-        return calc(state, items[item].type) * items[item].price + items[item].price;
+        return calcTaxPercent(state, items[item].type) * items[item].price + items[item].price;
     }
 
 
