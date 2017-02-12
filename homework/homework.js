@@ -66,6 +66,17 @@ var itemTypesTaxes = {
     "Texas": {base: 0.0625, Groceries: "freeTax", PrescriptionDrug: 0, PreparedFood:"freeTax"}
 };
 
+function calculatePriceFort(itemTypesTaxes, item) {
+    if (itemTypesTaxes[item].type.Groceries === "freeTax") {
+        return (items[item].price );
+    }
+
+    else {
+        return (items[item].price * (itemTypesTaxes[item].base));
+
+    }
+
+}
 
 
 
@@ -82,13 +93,15 @@ function calc(state, itemType) {
 //calculatePriceFor
 function calculatePriceFor(state, item) {
     if (items[item].type === "PreparedFood") {
-        return (items[item].price * (1 + base(state)));
+
+        return ( 1 + base(state) ) * items[item].price;
     }
 
     else {
-       return (items[item].price * (1 + calc(state, items[item].type)));
 
+        return calc(state, items[item].type) * items[item].price + items[item].price;
     }
+
 
 }
 
@@ -133,6 +146,7 @@ var tests = [
     () => assertEquals(0.2 * (1 + 0.0625), calculatePriceFor("Texas", "aspirin")),
     () => assertEquals(4.2 * (1 + 0.0625), calculatePriceFor("Texas", "ceasar salad")),
 
+   // () => assertEquals(4.2 * (1 + 0.0625), calculatePriceFort("Texas", "ceasar salad")),
 
 ];
 
