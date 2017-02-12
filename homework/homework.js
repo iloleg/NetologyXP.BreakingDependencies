@@ -1,16 +1,7 @@
 "use strict";
 
 // Этот код можно менять как угодно
-var items = {
-    "milk": {price: 5.5, type: "Groceries"},
-    "eggs": {price: 3.0, type: "Groceries"},
-    "coca-cola": {price: 0.4, type: "Groceries"},
-    "amoxicillin": {price: 6.7, type: "Groceries"},
-    "aspirin": {price: 0.2, type: "PrescriptionDrug"},
-    "marijuana": {price: 1.4, type: "PrescriptionDrug"},
-    "hamburger": {price: 2, type: "PreparedFood"},
-    "ceasar salad": {price: 4.2, type: "PreparedFood"},
-};
+
 
 var itemTypes =
     {
@@ -34,44 +25,6 @@ var itemTypes =
         }
     };
 
-var itemTax =
-    {
-        "Alabama": {
-            "base_tax": 0.04,
-            "Groceries": 0,
-            "PrescriptionDrug": ""
-        },
-        "Alaska": {
-            "base_tax": 0,
-            "Groceries": 0,
-            "PrescriptionDrug": ""
-        },
-        "Arizona": {
-            "base_tax": 0.056,
-            "Groceries": "",
-            "PrescriptionDrug": 0
-        },
-        "Arkansas": {
-            "base_tax": 0.065,
-            "Groceries": 0.015,
-            "PrescriptionDrug": ""
-        },
-        "California": {
-            "base_tax": 0.075,
-            "Groceries": "",
-            "PrescriptionDrug": ""
-        },
-        "Colorado": {
-            "base_tax": 0.029,
-            "Groceries": "",
-            "PrescriptionDrug": ""
-        },
-        "Connecticut": {
-            "base_tax": 0.0635,
-            "Groceries": "",
-            "PrescriptionDrug": ""
-        }
-    };
 
 function base(state) {
     return itemTax[state].base_tax;
