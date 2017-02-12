@@ -1,8 +1,6 @@
 "use strict";
 
 // Этот код можно менять как угодно
-
-
 var items = {
     "milk": {price: 5.5, type: "Groceries"},
     "eggs": {price: 3.0, type: "Groceries"},
@@ -23,9 +21,7 @@ var itemTypes =
             "Arkansas": 0.015,
             "California": "",
             "Colorado": "",
-            "Connecticut": "",
-            "Tennessee": 0.05,
-            "Texas":0
+            "Connecticut": ""
         },
         "PrescriptionDrug": {
             "Alabama": "",
@@ -34,9 +30,7 @@ var itemTypes =
             "Arkansas": "",
             "California": "",
             "Colorado": "",
-            "Connecticut": "",
-            "Tennessee":0,
-            "Texas":0
+            "Connecticut": ""
         }
     };
 
@@ -83,15 +77,6 @@ function base(state) {
     return itemTax[state].base_tax;
 }
 
-
-function calcTaxPercent(state, itemType) {
-
-    var itemTypeTaxModifier = itemTypes[itemType];
-    if (itemTypeTaxModifier[state] === "") {
-        return 0;
-    }
-    return base(state) + itemTypeTaxModifier[state];
-}
 function calc(state, itemType) {
 
     var itemTypeTaxModifier = itemTypes[itemType];
@@ -101,22 +86,15 @@ function calc(state, itemType) {
     return base(state) + itemTypeTaxModifier[state];
 }
 
-//calculatePriceFor
 function calculatePriceFor(state, item) {
-    if (items[item].type === "PreparedFood") {
 
+    if (items[item].type === "PreparedFood") {
         return ( 1 + base(state) ) * items[item].price;
     }
-
     else {
-
-        return calcTaxPercent(state, items[item].type) * items[item].price + items[item].price;
+        return calc(state, items[item].type) * items[item].price + items[item].price;
     }
-
-
 }
-
-
 class TaxCalculator {
     // У этой функции нелья менять интерфейс
     // Но можно менять содержимое
