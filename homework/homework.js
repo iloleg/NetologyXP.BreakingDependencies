@@ -2,67 +2,42 @@
 
 // Этот код можно менять как угодно
 
+var items = require('./items.json');
+var itemTax = require('./item_tax.json');
 
-var itemTypes =
-    {
-        "Groceries": {
-            "Alabama": 0,
-            "Alaska": 0,
-            "Arizona": "",
-            "Arkansas": 0.015,
-            "California": "",
-            "Colorado": "",
-            "Connecticut": ""
-        },
-        "PrescriptionDrug": {
-            "Alabama": "",
-            "Alaska": 0,
-            "Arizona": "",
-            "Arkansas": "",
-            "California": "",
-            "Colorado": "",
-            "Connecticut": ""
-        }
-    };
-
-
-function base(state) {
-    return itemTax[state].base_tax;
-}
-
-function calc(state, itemType) {
-
-    var itemTypeTaxModifier = itemTypes[itemType];
-    if (itemTypeTaxModifier[state] === "") {
-        return 0;
-    }
-    return base(state) + itemTypeTaxModifier[state];
-}
-
-function calculatePriceFor(state, item) {
-
-    if (items[item].type === "PreparedFood") {
-        return ( 1 + base(state) ) * items[item].price;
-    }
-    else {
-        return calc(state, items[item].type) * items[item].price + items[item].price;
-    }
-}
 class TaxCalculator {
-    // У этой функции нелья менять интерфейс
-    // Но можно менять содержимое
+
     calculateTax() {
         var ordersCount = getOrdersCount();
         var state = getSelectedState();
-        console.log(`----------${state}-----------`);
+
+        this.print(`----------${state}-----------`);
+
         for (var i = 0; i < ordersCount; i++) {
             var item = getSelectedItem();
-            var result = calculatePriceFor(state, item);
-            console.log(`${item}: $${result.toFixed(2)}`);
+            var result = this.calculatePriceFor(state, item);
+            this.print(`${item}: $${result.toFixed(2)}`);
         }
-        console.log(`----Have a nice day!-----`);
+
+        this.print(`----Have a nice day!-----`);
+    }
+
+    calculatePriceFor(state, item) {
+        return (1 + this.calculateTaxPercent(state, items[item].type)) * items[item].price;
+    }
+
+    calculateTaxPercent(state, itemType) {
+        if (itemTax[state][itemType] === "") {
+            return 0;
+        }
+        return itemTax[state].base_tax + itemTax[state][itemType];
+    }
+
+    print(line) {
+        console.log(line);
     }
 }
+
 
 //############################
 //Production - код:
