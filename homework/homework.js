@@ -1,9 +1,7 @@
 "use strict";
 
-// Этот код можно менять как угодно
-
 var items = require('./items.json');
-var itemTax = require('./item_tax.json');
+var itemTax = require('./itemTax.json');
 
 class TaxCalculator {
 
@@ -38,29 +36,20 @@ class TaxCalculator {
     }
 }
 
-
-//############################
-//Production - код:
 calculateTaxes();
 
-//############################
-//Тесты:
+var calculator = new TaxCalculator();
 var tests = [
-    () => assertEquals(3.0 * (1 + 0.04), calculatePriceFor("Alabama", "eggs")),
-    () => assertEquals(0.4 * (1 + 0.015 + 0.065), calculatePriceFor("Arkansas", "coca-cola")),
-    () => assertEquals(6.7 * (1 + 0.0), calculatePriceFor("Alaska", "amoxicillin")),
-    () => assertEquals(6.7 * (1 + 0.0), calculatePriceFor("California", "amoxicillin")),
-    () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
-    () => assertEquals(3.0 * (1 + 0.07+0.05), calculatePriceFor("Tennessee", "eggs")),
-    () => assertEquals(0.2 * (1 + 0.07), calculatePriceFor("Tennessee", "aspirin")),
-    () => assertEquals(4.2 * (1 + 0.07), calculatePriceFor("Tennessee", "ceasar salad")),
-    () => assertEquals(3.0 * (1 + 0.0625), calculatePriceFor("Texas", "eggs")),
-    () => assertEquals(0.2 * (1 + 0.0625), calculatePriceFor("Texas", "aspirin")),
-    () => assertEquals(4.2 * (1 + 0.0625), calculatePriceFor("Texas", "ceasar salad")),
+            () => assertEquals(3.0 * (1 + 0.04), calculator.calculatePriceFor("Alabama", "eggs")),
+            () => assertEquals(0.4 * (1 + 0.015 + 0.065), calculator.calculatePriceFor("Arkansas", "coca-cola")),
+            () => assertEquals(6.7 * (1 + 0.0), calculator.calculatePriceFor("Alaska", "amoxicillin")),
+            () => assertEquals(6.7 * (1 + 0.0), calculator.calculatePriceFor("California", "amoxicillin")),
+            () => assertEquals(2 * (1 + 0.0635), calculator.calculatePriceFor("Connecticut", "hamburger")),
+            () => assertEquals(6.7 * (1 + 0.07 + 0.05), calculator.calculatePriceFor("Tennessee", "amoxicillin")),
+            () => assertEquals(6.7 * (1 + 0.0), calculator.calculatePriceFor("Texas", "amoxicillin")),
+            () => assertEquals(2 * (1 + 0.0625), calculator.calculatePriceFor("Texas", "hamburger")),
+        ];
 
-   // () => assertEquals(4.2 * (1 + 0.0625), calculatePriceFort("Texas", "ceasar salad")),
-
-];
 
 //Раскомментируйте следующую строчку для запуска тестов:
 runAllTests (tests);
