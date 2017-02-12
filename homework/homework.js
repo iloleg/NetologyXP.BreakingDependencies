@@ -39,45 +39,49 @@ var itemTypes =
             "Texas":0
         }
     };
-function base(state) {
-    var taxes = {
-        "Alabama": 0.04,
-        "Alaska": 0,
-        "Arizona": 0.056,
-        "Arkansas": 0.065,
-        "California": 0.075,
-        "Colorado": 0.029,
-        "Connecticut": 0.0635,
-        "Tennessee": 0.07,
-        "Texas": 0.0625
+
+var itemTax =
+    {
+        "Alabama": {
+            "base_tax": 0.04,
+            "Groceries": 0,
+            "PrescriptionDrug": ""
+        },
+        "Alaska": {
+            "base_tax": 0,
+            "Groceries": 0,
+            "PrescriptionDrug": ""
+        },
+        "Arizona": {
+            "base_tax": 0.056,
+            "Groceries": "",
+            "PrescriptionDrug": 0
+        },
+        "Arkansas": {
+            "base_tax": 0.065,
+            "Groceries": 0.015,
+            "PrescriptionDrug": ""
+        },
+        "California": {
+            "base_tax": 0.075,
+            "Groceries": "",
+            "PrescriptionDrug": ""
+        },
+        "Colorado": {
+            "base_tax": 0.029,
+            "Groceries": "",
+            "PrescriptionDrug": ""
+        },
+        "Connecticut": {
+            "base_tax": 0.0635,
+            "Groceries": "",
+            "PrescriptionDrug": ""
+        }
     };
-    return taxes[state];
+
+function base(state) {
+    return itemTax[state].base_tax;
 }
-
-var itemTypesTaxes = {
-    "Alabama": {base: 0.04, Groceries: 0, PrescriptionDrug: "", PreparedFood: 0},
-    "Alaska": {base: 0, Groceries: 0, PrescriptionDrug: 0, PreparedFood: 0},
-    "Arizona": {base: 0.056, Groceries: "", PrescriptionDrug: "", PreparedFood: 0},
-    "Arkansas": {base: 0.065, Groceries: 0.015, PrescriptionDrug: "", PreparedFood: 0},
-    "California": {base: 0.075, Groceries: "", PrescriptionDrug: "", PreparedFood: 0},
-    "Colorado": {base: 0.029, Groceries: "", PrescriptionDrug: "", PreparedFood: 0},
-    "Connecticut": {base: 0.0635, Groceries: "", PrescriptionDrug: "", PreparedFood: 0},
-    "Tennessee": {base: 0.07, Groceries: 0.05, PrescriptionDrug: "", PreparedFood: 0},
-    "Texas": {base: 0.0625, Groceries: "freeTax", PrescriptionDrug: 0, PreparedFood:"freeTax"}
-};
-
-function calculatePriceFort(itemTypesTaxes, item) {
-    if (itemTypesTaxes[item].type.Groceries === "freeTax") {
-        return (items[item].price );
-    }
-
-    else {
-        return (items[item].price * (itemTypesTaxes[item].base));
-
-    }
-
-}
-
 
 
 function calcTaxPercent(state, itemType) {
